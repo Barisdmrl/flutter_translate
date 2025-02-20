@@ -439,7 +439,7 @@
             "outputFile": "com.example.flutter_translator_app-debug-26:/values-night-v8_values-night-v8.arsc.flat",
             "map": [
                 {
-                    "source": "/Users/barisdemirel/flutter/flutter_translator_app/android/app/src/main/res/values-night/styles.xml",
+                    "source": "/Users/barisdemirel/Desktop/Flutter_app/flutter_translate/android/app/src/main/res/values-night/styles.xml",
                     "from": {
                         "startLines": "3,14",
                         "startColumns": "4,4",
@@ -1391,24 +1391,7 @@
                     }
                 },
                 {
-                    "source": "/Users/barisdemirel/.gradle/caches/8.10.2/transforms/1a65abb131ceda2dea45b64e438d14a3/transformed/lifecycle-runtime-2.7.0/res/values/values.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "42",
-                        "endOffsets": "93"
-                    },
-                    "to": {
-                        "startLines": "140",
-                        "startColumns": "4",
-                        "startOffsets": "6888",
-                        "endColumns": "42",
-                        "endOffsets": "6926"
-                    }
-                },
-                {
-                    "source": "/Users/barisdemirel/flutter/flutter_translator_app/android/app/src/main/res/values/styles.xml",
+                    "source": "/Users/barisdemirel/Desktop/Flutter_app/flutter_translate/android/app/src/main/res/values/styles.xml",
                     "from": {
                         "startLines": "3,14",
                         "startColumns": "4,4",
@@ -1424,6 +1407,23 @@
                         "endLines": "158,161",
                         "endColumns": "12,12",
                         "endOffsets": "8070,8239"
+                    }
+                },
+                {
+                    "source": "/Users/barisdemirel/.gradle/caches/8.10.2/transforms/1a65abb131ceda2dea45b64e438d14a3/transformed/lifecycle-runtime-2.7.0/res/values/values.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "42",
+                        "endOffsets": "93"
+                    },
+                    "to": {
+                        "startLines": "140",
+                        "startColumns": "4",
+                        "startOffsets": "6888",
+                        "endColumns": "42",
+                        "endOffsets": "6926"
                     }
                 },
                 {

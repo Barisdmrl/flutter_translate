@@ -1,11 +1,69 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 void main() {
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
-  MyApp({super.key});
+class MyApp extends StatefulWidget {
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  TextEditingController inputController = TextEditingController(); // Kullanıcı girdisi
+  TextEditingController outputController = TextEditingController(); // Çeviri sonucu
+
+  // Dil Seçimleri
+  String? inputLanguage = 'Türkçe'; // Giriş dili
+  String? outputLanguage = 'İngilizce'; // Çıktı dili
+
+  // Desteklenen diller
+  List<String> languages = ['Türkçe', 'İngilizce', 'Almanca', 'İspanyolca'];
+
+  Future<void> translateText() async {
+    String text = inputController.text.trim();
+    if (text.isEmpty) return; // Eğer boşsa çeviri yapma
+
+    String sourceLang = _getLanguageCode(inputLanguage!); // Giriş dilinin kodu
+    String targetLang = _getLanguageCode(outputLanguage!); // Çıkış dilinin kodu
+
+    final url = Uri.parse(
+        "https://api.mymemory.translated.net/get?q=$text&langpair=$sourceLang|$targetLang");
+
+    try {
+      final response = await http.get(url);
+      if (response.statusCode == 200) {
+        var jsonData = jsonDecode(response.body);
+        String translatedText = jsonData["responseData"]["translatedText"];
+
+        setState(() {
+          outputController.text = translatedText; // Çeviri sonucunu göster
+        });
+      } else {
+        print("API hatası: ${response.statusCode}");
+      }
+    } catch (e) {
+      print("Bağlantı hatası: $e");
+    }
+  }
+
+  // Dil isimlerini API'ye uygun dil kodlarına dönüştürür
+  String _getLanguageCode(String language) {
+    switch (language) {
+      case 'Türkçe':
+        return 'tr';
+      case 'İngilizce':
+        return 'en';
+      case 'Almanca':
+        return 'de';
+      case 'İspanyolca':
+        return 'es';
+      default:
+        return 'en'; // Varsayılan dil İngilizce
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -17,82 +75,98 @@ class MyApp extends StatelessWidget {
           backgroundColor: Colors.amber,
           title: Text("ÇEVİRİ UYGULAMASI"),
         ),
-        body: Center( // 📌 **Tüm içeriği ekranın ortasına almak için** Center kullanıldı
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              SizedBox(height: 20), // Resim ile buton grubu arasında boşluk
+        body: Center(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                // 📌 **Giriş dilini seçme DropdownButton**
+                DropdownButton<String>(
+                  value: inputLanguage,
+                  onChanged: (String? newValue) {
+                    setState(() {
+                      inputLanguage = newValue;
+                    });
+                  },
+                  items: languages.map<DropdownMenuItem<String>>((String language) {
+                    return DropdownMenuItem<String>(
+                      value: language,
+                      child: Text(language),
+                    );
+                  }).toList(),
+                ),
 
-              // 📌 **Butonları yatayda hizalamak için Row kullanıldı**
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center, // **Tam ortalamak için**
-                children: [
-                  doprbutton(), // Dil seçme dropdown
-                  SizedBox(width: 10), // İki buton arasına boşluk ekle
-                  ButonTurleri(), // Translate butonu
-                ],
-              ),
-            ],
+                SizedBox(height: 10),
+
+                // 📌 **Çevirilecek dili seçme DropdownButton**
+                DropdownButton<String>(
+                  value: outputLanguage,
+                  onChanged: (String? newValue) {
+                    setState(() {
+                      outputLanguage = newValue;
+                    });
+                  },
+                  items: languages.map<DropdownMenuItem<String>>((String language) {
+                    return DropdownMenuItem<String>(
+                      value: language,
+                      child: Text(language),
+                    );
+                  }).toList(),
+                ),
+
+                SizedBox(height: 20),
+
+                // 📌 **Giriş Metni için TextField**
+                Container(
+                  width: double.infinity,
+                  child: TextField(
+                    controller: inputController,
+                    textAlign: TextAlign.center,
+                    minLines: 1,
+                    maxLines: null,
+                    maxLength: 200,
+                    decoration: InputDecoration(
+                      hintText: "Çeviri yapılacak metni giriniz",
+                      border: OutlineInputBorder(),
+                    ),
+                  ),
+                ),
+
+                SizedBox(height: 20),
+
+                // 📌 **Çevirme Butonu**
+                OutlinedButton(
+                  onPressed: translateText,
+                  child: Text("TRANSLATE"),
+                  style: OutlinedButton.styleFrom(
+                    shape: StadiumBorder(),
+                    side: BorderSide(color: Colors.black, width: 3),
+                  ),
+                ),
+
+                SizedBox(height: 20),
+
+                // 📌 **Çeviri Sonucu için TextField**
+                Container(
+                  width: double.infinity,
+                  child: TextField(
+                    controller: outputController,
+                    textAlign: TextAlign.center,
+                    minLines: 1,
+                    maxLines: null,
+                    readOnly: true, // Kullanıcı değiştiremez
+                    decoration: InputDecoration(
+                      hintText: "Çeviri Sonucu",
+                      border: OutlineInputBorder(),
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
-      ),
-    );
-  }
-}
-
-// 📌 **Dropdown Butonu (Dil Seçme)**
-class doprbutton extends StatefulWidget {
-  const doprbutton({super.key});
-
-  @override
-  State<doprbutton> createState() => _doprbuttonState();
-}
-
-class _doprbuttonState extends State<doprbutton> {
-  String? _secilenDil;
-  List<String> _tumDiller = ['Türkçe', 'İngilizce', 'Almanca', 'İspanyolca'];
-
-  @override
-  Widget build(BuildContext context) {
-    return DropdownButton<String>(
-      hint: Text("Dil Seçiniz"),
-      icon: Icon(Icons.arrow_drop_down),
-      iconSize: 24,
-      items: _tumDiller
-          .map(
-            (String oankiDil) => DropdownMenuItem(
-              child: Text(oankiDil),
-              value: oankiDil,
-            ),
-          )
-          .toList(),
-      onChanged: (String? yeni) {
-        setState(() {
-          _secilenDil = yeni;
-        });
-      },
-      value: _secilenDil,
-    );
-  }
-}
-
-// 📌 **Translate Butonu**
-class ButonTurleri extends StatefulWidget {
-  const ButonTurleri({super.key});
-
-  @override
-  State<ButonTurleri> createState() => _ButonTurleriState();
-}
-
-class _ButonTurleriState extends State<ButonTurleri> {
-  @override
-  Widget build(BuildContext context) {
-    return OutlinedButton(
-      onPressed: () {},
-      child: Text("TRANSLATE"),
-      style: OutlinedButton.styleFrom(
-        shape: StadiumBorder(),
-        side: BorderSide(color: Colors.black, width: 3),
       ),
     );
   }

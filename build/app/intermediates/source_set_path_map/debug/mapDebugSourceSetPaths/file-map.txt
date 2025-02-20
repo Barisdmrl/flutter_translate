@@ -18,10 +18,10 @@ com.example.flutter_translator_app-lifecycle-viewmodel-2.7.0-16 /Users/barisdemi
 com.example.flutter_translator_app-jetified-lifecycle-viewmodel-savedstate-2.7.0-17 /Users/barisdemirel/.gradle/caches/8.10.2/transforms/da3cbb449f63c596a53d4d600270c6c6/transformed/jetified-lifecycle-viewmodel-savedstate-2.7.0/res
 com.example.flutter_translator_app-jetified-annotation-experimental-1.4.0-18 /Users/barisdemirel/.gradle/caches/8.10.2/transforms/e3bb499e9185191f0510f8570d5ce148/transformed/jetified-annotation-experimental-1.4.0/res
 com.example.flutter_translator_app-jetified-tracing-1.2.0-19 /Users/barisdemirel/.gradle/caches/8.10.2/transforms/eae3aced0a59c52f7b140af22112fb8c/transformed/jetified-tracing-1.2.0/res
-com.example.flutter_translator_app-debug-20 /Users/barisdemirel/flutter/flutter_translator_app/android/app/src/debug/res
-com.example.flutter_translator_app-main-21 /Users/barisdemirel/flutter/flutter_translator_app/android/app/src/main/res
-com.example.flutter_translator_app-pngs-22 /Users/barisdemirel/flutter/flutter_translator_app/build/app/generated/res/pngs/debug
-com.example.flutter_translator_app-resValues-23 /Users/barisdemirel/flutter/flutter_translator_app/build/app/generated/res/resValues/debug
-com.example.flutter_translator_app-packageDebugResources-24 /Users/barisdemirel/flutter/flutter_translator_app/build/app/intermediates/incremental/debug/packageDebugResources/merged.dir
-com.example.flutter_translator_app-packageDebugResources-25 /Users/barisdemirel/flutter/flutter_translator_app/build/app/intermediates/incremental/debug/packageDebugResources/stripped.dir
-com.example.flutter_translator_app-debug-26 /Users/barisdemirel/flutter/flutter_translator_app/build/app/intermediates/merged_res/debug/mergeDebugResources
+com.example.flutter_translator_app-debug-20 /Users/barisdemirel/Desktop/Flutter_app/flutter_translate/android/app/src/debug/res
+com.example.flutter_translator_app-main-21 /Users/barisdemirel/Desktop/Flutter_app/flutter_translate/android/app/src/main/res
+com.example.flutter_translator_app-pngs-22 /Users/barisdemirel/Desktop/Flutter_app/flutter_translate/build/app/generated/res/pngs/debug
+com.example.flutter_translator_app-resValues-23 /Users/barisdemirel/Desktop/Flutter_app/flutter_translate/build/app/generated/res/resValues/debug
+com.example.flutter_translator_app-packageDebugResources-24 /Users/barisdemirel/Desktop/Flutter_app/flutter_translate/build/app/intermediates/incremental/debug/packageDebugResources/merged.dir
+com.example.flutter_translator_app-packageDebugResources-25 /Users/barisdemirel/Desktop/Flutter_app/flutter_translate/build/app/intermediates/incremental/debug/packageDebugResources/stripped.dir
+com.example.flutter_translator_app-debug-26 /Users/barisdemirel/Desktop/Flutter_app/flutter_translate/build/app/intermediates/merged_res/debug/mergeDebugResources

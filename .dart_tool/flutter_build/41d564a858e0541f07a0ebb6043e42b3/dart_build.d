@@ -1,0 +1,1 @@
+ /Users/barisdemirel/Desktop/Flutter_app/flutter_translate/.dart_tool/flutter_build/41d564a858e0541f07a0ebb6043e42b3/dart_build_result.json: 

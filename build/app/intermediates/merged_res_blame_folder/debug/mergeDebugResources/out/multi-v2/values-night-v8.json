@@ -4,7 +4,7 @@
             "outputFile": "com.example.flutter_translator_app-mergeDebugResources-24:/values-night-v8/values-night-v8.xml",
             "map": [
                 {
-                    "source": "/Users/barisdemirel/flutter/flutter_translator_app/android/app/src/main/res/values-night/styles.xml",
+                    "source": "/Users/barisdemirel/Desktop/Flutter_app/flutter_translate/android/app/src/main/res/values-night/styles.xml",
                     "from": {
                         "startLines": "3,14",
                         "startColumns": "4,4",
